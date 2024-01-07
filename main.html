@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprawdź swoją zdrapkę</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            background-color: #008080; /* Kolor morski */
+            color: white;
+            padding: 10px;
+        }
+        #content {
+            margin-top: 20px;
+        }
+        #result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sprawdź swoją zdrapkę</h1>
+    </header>
+    <div id="content">
+        <label for="code">Wprowadź kod:</label>
+        <input type="text" id="code" placeholder="Wpisz kod">
+        <button onclick="przypiszLiczbe()">OK</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Słownik (mapa) przypisująca liczby do pierwszych 5 znaków kodu
+        var mapaKodow = {
+            "Y8G4K": 0,
+            "K3W2J": 10,
+            "O0P1L": 715,
+            "H5M3F": 5,
+            "V4C2V": 100,
+            "Z8N6D": 50,
+            "H0I2C": 30,
+            "Y5S4S": 0,
+            "K0L4F": 10,
+            "M2N4B": 2,
+            "G7L3K": 18,
+            "K3B4M": 20,
+            "E9G6S": 10,
+            "Z6F8H": 10,
+            "M7K6S": 10,
+            "N3BT5": 50,
+            "G7S5S": 50,
+            "F2L9K": 50,
+            "O8P3S": 0,
+            "Y8S5F": 15,
+            "T0H8S": 15,
+            "M3KK5": 15,
+            "JF6SK": 5,
+            "FL4DS": 75,
+            "DJ7KD": 25
+        };
+
+        var liczba;
+
+        function przypiszLiczbe() {
+            var codeInput = document.getElementById("code").value;
+            var resultContainer = document.getElementById("result");
+
+            var pierwsze5Zn = codeInput.slice(0, 5);
+            if (mapaKodow.hasOwnProperty(pierwsze5Zn)) {
+                liczba = mapaKodow[pierwsze5Zn];
+                resultContainer.textContent = "Wygrana: " + liczba;
+            } else {
+                alert("Nieprawidłowy kod. Spróbuj ponownie.");
+            }
+        }
+    </script>
+</body>
+</html>
+
